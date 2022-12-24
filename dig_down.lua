@@ -1,7 +1,12 @@
 
 unwanted = {
     "minecraft:dirt",
-    "minecraft:stone"
+    "minecraft:stone",
+    "minecraft:grass_block",
+    "minecraft:diorite",
+    "minecraft:andesite",
+    "minecraft:gravel",
+    "minecraft:sand"
 }
 
 function has_value(table, val)
