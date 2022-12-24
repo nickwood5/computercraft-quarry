@@ -137,12 +137,13 @@ function mine_single_strip(depth)
         deposit()
     end
     up_break_forward(depth)
+    organize()
     remove_junk() 
     if is_turtle_full() then
         print("Turtle is full")
         deposit()
     end
-    forward(1)
+    forward(2)
 end
 
 function mine_complete_strip(strips, depth)
@@ -287,6 +288,7 @@ function mine_single_chunk(strips, depth)
     right()
     forward(1)
     right()
+    forward(1)
     mine_complete_strip(strips, depth)
     left()
     forward(1)
@@ -295,18 +297,26 @@ end
 
 function mine_complete_chunk(strips, depth)
     mine_single_chunk(strips, depth)
+    forward(1)
     mine_single_chunk(strips, depth)
+    forward(1)
 end
 
 function is_turtle_full()
+    amount = 13
+    count = 0
     for i = 1,16,1 do
         turtle.select(i)
         a = turtle.getItemDetail()
-        if a == nil then
-            return false
+        if a ~= nil then
+            count = count + 1
         end
     end 
-    return true
+    if count >= amount then
+        return true
+    end
+    return false
+
 end
 
 left()
@@ -334,10 +344,10 @@ for i = 1,16,1 do
     end
 end 
 
-x_chunks = 2
-y_chunks = 2
+x_chunks = 5
+y_chunks = 5
 
-for y_chunks = 1, y_chunks, 1 do
+for y_chunk = 1, y_chunks, 1 do
     mine_complete_chunk(x_chunks, 65)
 end
 
