@@ -53,6 +53,14 @@ function inspect_down()
     return false
 end
 
+function assert_forward()
+    local success = turtle.forward()
+    while not success do
+        turtle.dig()
+        success = turtle.forward()
+    end
+end
+
 function inspect_forward()
     local success, block = turtle.inspect()
     if success then
@@ -70,7 +78,7 @@ function inspect_forward()
 end
 
 function check_edge()
-    turtle.forward()
+    assert_forward()
 
     inspect_forward()
     inspect_down()
@@ -82,7 +90,7 @@ function check_edge()
     inspect_forward()
     turtle.turnRight()
 
-    turtle.forward()
+    assert_forward()
 end
 
 
