@@ -9,6 +9,8 @@ unwanted = {
     "minecraft:sand"
 }
 
+stop_level = -57
+
 function has_value(table, val)
     for index, value in ipairs(table) do
         if value == val then
@@ -86,20 +88,18 @@ function check_edge()
     assert_forward()
 
     inspect_forward()
-    inspect_down()
+    inspect_down() 
     inspect_up()
-    turtle.turnLeft()
+    turtle.turnLeft() 
     inspect_forward()
-    turtle.turnRight()
-    turtle.turnRight()
+    turtle.turnRight() 
+    turtle.turnRight() 
     inspect_forward()
     turtle.turnRight()
 
     assert_forward()
+    turtle.turnLeft()
 end
-
-
-
 
 
 function dig_layer()
